@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="hero">
+    <div class="container">
+        <div class="hero-content">
+            <h1>DEFINING CLIMATE CHANGE THROUGH OUR STORIES</h1>
+            <p>Join our movement to make climate action personal, relatable, and impactful through shared experiences and collective action</p>
+            <div class="hero-buttons">
+                <a href="{{ url_for('submit_story') }}" class="btn btn-primary">
+                    <i class="fas fa-hands-helping"></i> SHARE YOUR STORY
+                </a>
+                <a href="{{ url_for('stories') }}" class="btn btn-outline" style="color: white; border-color: white;">
+                    <i class="fas fa-book-open"></i> EXPLORE STORIES
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="featured-stories" class="stories">
+    <div class="container">
+        <h2>FEATURED STORIES</h2>
+        <div class="stories-grid">
+            {% for story in stories %}
+            <div class="story-card">
+                <div class="story-image">
+                    <img src="{{ story.image_url }}" alt="{{ story.title }}" loading="lazy">
+                    <div class="story-badge">{{ story.category }}</div>
+                </div>
+                <div class="story-content">
+                    <div class="story-meta">
+                        <span><i class="far fa-calendar"></i> {{ story.date }}</span>
+                        <span><i class="far fa-user"></i> {{ story.author }}</span>
+                    </div>
+                    <h3>{{ story.title }}</h3>
+                    <p>{{ story.content|truncate(200) }}</p>
+                    <a href="{{ url_for('story', id=story.id) }}" class="btn btn-primary">Read Full Story</a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock %}
+

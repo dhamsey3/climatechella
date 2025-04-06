@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="about" aria-labelledby="about-heading">
+    <div class="container">
+        <header class="about-header text-center">
+            <h1 id="about-heading">Our Climate Story Mission</h1>
+            <p class="subtitle">Amplifying voices for meaningful climate action</p>
+        </header>
+
+        <div class="about-mission">
+            <article class="mission-card" aria-labelledby="why-heading">
+                <div class="mission-icon" aria-hidden="true">
+                    <i class="fas fa-globe-europe" role="img"></i>
+                </div>
+                <h2 id="why-heading" class="h3">Why We Exist</h2>
+                <p>Climate change isn't just about statistics - it's about human experiences. We bridge the gap between scientific data and personal narratives to make climate action relatable and urgent.</p>
+            </article>
+
+            <article class="mission-card" aria-labelledby="approach-heading">
+                <div class="mission-icon" aria-hidden="true">
+                    <i class="fas fa-users" role="img"></i>
+                </div>
+                <h2 id="approach-heading" class="h3">Our Approach</h2>
+                <p>By collecting and sharing personal climate stories from around the world, we create empathy and understanding that drives real behavioral change and policy action.</p>
+            </article>
+
+            <article class="mission-card" aria-labelledby="vision-heading">
+                <div class="mission-icon" aria-hidden="true">
+                    <i class="fas fa-seedling" role="img"></i>
+                </div>
+                <h2 id="vision-heading" class="h3">Our Vision</h2>
+                <p>A world where every climate decision considers both scientific evidence and human impact, leading to more just and effective solutions.</p>
+            </article>
+        </div>
+
+        <section class="about-team" aria-labelledby="team-heading">
+            <h2 id="team-heading" class="text-center">Meet Our Team</h2>
+            <div class="team-grid">
+                <article class="team-member" aria-labelledby="member1-name">
+                    <div class="member-image" role="img" aria-label="Portrait of Patricia Korir" style="background-image: url('{{ url_for('static', filename='images/team/team1.jpg') }}');"></div>
+                    <h3 id="member1-name" class="h4">Patricia Korir</h3>
+                    <p class="role">Founder & Director</p>
+                    <p class="bio">Environmental scientist turned storyteller</p>
+                </article>
+                <!-- Add more team members -->
+            </div>
+        </section>
+
+        <section class="cta-section text-center" aria-labelledby="cta-heading">
+            <h2 id="cta-heading">Ready to share your story?</h2>
+            <a href="{{ url_for('submit_story') }}" class="btn btn-primary">
+                <i class="fas fa-pen-alt" aria-hidden="true"></i> Contribute Your Experience
+            </a>
+            <p

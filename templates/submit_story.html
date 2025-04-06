@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="submit-story">
+    <div class="container">
+        <h2>SHARE YOUR CLIMATE STORY</h2>
+        <form method="POST" action="{{ url_for('submit_story') }}">
+            <div class="form-group">
+                <label for="title">Story Title</label>
+                <input type="text" id="title" name="title" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="content">Your Story</label>
+                <textarea id="content" name="content" class="form-control" rows="10" required></textarea>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="author">Your Name</label>
+                    <input type="text" id="author" name="author" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="location">Location</label>
+                    <input type="text" id="location" name="location" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="category">Category</label>
+                    <select id="category" name="category" class="form-control" required>
+                        <option value="">Select a category</option>
+                        <option value="Personal Story">Personal Story</option>
+                        <option value="Community">Community</option>
+                        <option value="Solution">Solution</option>
+                    </select>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary">
+                <i class="fas fa-paper-plane"></i> SUBMIT STORY
+            </button>
+        </form>
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,48 @@
+<div class="stories-grid">
+    {% for story in stories %}
+    <article class="story-card">
+        <div class="story-image-container">
+            <img src="{{ story.image_url or url_for('static', filename='images/default-story.jpg') }}" 
+                 alt="Story image for {{ story.title }}" 
+                 loading="lazy">
+            {% if story.category %}
+            <span class="story-badge">{{ story.category }}</span>
+            {% endif %}
+        </div>
+        
+        <div class="story-content">
+            <div class="story-meta">
+                <span>
+                    <i class="far fa-calendar-alt"></i>
+                    {{ story.date or 'No date' }}
+                </span>
+                <span>
+                    <i class="far fa-user"></i>
+                    {{ story.author or 'Anonymous' }}
+                </span>
+                {% if story.location %}
+                <span>
+                    <i class="fas fa-map-marker-alt"></i>
+                    {{ story.location }}
+                </span>
+                {% endif %}
+            </div>
+            
+            <h3>{{ story.title or 'Untitled Story' }}</h3>
+            
+            <div class="story-excerpt">
+                {{ story.content|truncate(200) if story.content else 'Content coming soon' }}
+            </div>
+            
+            <a href="{{ url_for('story', id=story.id) }}" class="btn">
+                Read Full Story
+            </a>
+        </div>
+    </article>
+    {% else %}
+    <div class="no-stories">
+        <p>No published stories found</p>
+        <a href="{{ url_for('submit_story') }}">Be the first to share your story</a>
+    </div>
+    {% endfor %}
+</div>
